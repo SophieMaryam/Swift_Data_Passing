@@ -25,6 +25,14 @@ class SecondViewController: UIViewController {
 
 
     @IBAction func sendDataBack(_ sender: Any) {
-        
+        performSegue(withIdentifier: "sendDataBack", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sendDataBack" {
+            let firstVC = segue.destination as! ViewController
+            
+            firstVC.dataPassedBack = textField.text!
+        }
     }
 }

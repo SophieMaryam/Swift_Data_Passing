@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var dataPassedBack = ""
 
     @IBOutlet weak var label: UILabel!
     
@@ -17,6 +18,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        label.text = dataPassedBack
     }
     
     @IBAction func sendButtonPressed(_ sender: Any) {
