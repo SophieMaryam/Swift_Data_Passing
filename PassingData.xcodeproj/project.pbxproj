@@ -56,8 +56,8 @@
 		12FFDDE920E0E69C006788BE /* PassingData */ = {
 			isa = PBXGroup;
 			children = (
-				12FFDDEA20E0E69C006788BE /* AppDelegate.swift */,
 				12FFDDEC20E0E69C006788BE /* ViewController.swift */,
+				12FFDDEA20E0E69C006788BE /* AppDelegate.swift */,
 				12FFDDFC20E0E6B0006788BE /* SecondViewController.swift */,
 				12FFDDEE20E0E69C006788BE /* Main.storyboard */,
 				12FFDDF120E0E69D006788BE /* Assets.xcassets */,

@@ -8,8 +8,18 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+// Protocols at same hierarchial level as classes
+// Sets out rules of engagement
+protocol CanReceive {
+    func dataReceived(data: String)
+}
 
+class SecondViewController: UIViewController {
+    
+    // Will do the delegating: Sending Data (second VC)
+    // ? because the delegate might be nil
+    var delegate : CanReceive?
+    
     var data = ""
     
     @IBOutlet weak var label: UILabel!
@@ -20,19 +30,19 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
 
         label.text = data
+        print("hello2")
         
     }
 
 
     @IBAction func sendDataBack(_ sender: Any) {
-        performSegue(withIdentifier: "sendDataBack", sender: self)
+
+        // if delegate is nil -> not triggered
+        // if role of delegate != nil -> triggered
+        // send data to the delegate via the method
+        delegate?.dataReceived(data: textField.text!)
+        dismiss(animated: true, completion: nil)
+        print("hello1")
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "sendDataBack" {
-            let firstVC = segue.destination as! ViewController
-            
-            firstVC.dataPassedBack = textField.text!
-        }
-    }
+
 }

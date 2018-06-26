@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    var dataPassedBack = ""
+class ViewController: UIViewController, CanReceive {
 
     @IBOutlet weak var label: UILabel!
     
@@ -18,8 +16,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func changeToBlue(_ sender: Any) {
         
-        label.text = dataPassedBack
+        if view.backgroundColor == UIColor.magenta {
+             view.backgroundColor = UIColor.blue
+        } else {
+             view.backgroundColor = UIColor.magenta
+        }
     }
     
     @IBAction func sendButtonPressed(_ sender: Any) {
@@ -32,7 +37,16 @@ class ViewController: UIViewController {
             let secondVC = segue.destination as! SecondViewController
             
             secondVC.data = textField.text!
+            
+            secondVC.delegate = self
+
         }
+    }
+
+    // Required Delegate Method
+    func dataReceived(data: String) {
+        //display data inside label of first VC
+        label.text = data
     }
 }
 
